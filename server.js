@@ -7,19 +7,24 @@ app.use(express.json());
 
 let users = [
 	{
-		id: {
-			type: String,
-			default: shortid.generate
-		},
+		id: shortid.generate,
 		name: 'Kly Tana', 
 		bio: "The Kitana of Tana" 
-	}
+    },
+    {
+		id: shortid.generate,
+		name: 'thien Kim', 
+		bio: "sister of the Kitana of Tana" 
+    }
 ];
 
 // POST creates a user *************************************** Kim Buck 2020
 function createUser(data) {
 	const payload = {
-		id: String(users.length + 1),
+		id: {
+			type: String,
+			default: shortid.generate()
+		},
 		...data
 	};
 
@@ -28,7 +33,7 @@ function createUser(data) {
 }
 
 app.post('/api/users', (req, res) => {
-	if ((!req.body.name) || (!req.bosy.bio)) {
+	if ((!req.body.name) || (!req.body.bio)) {
 		return res.status(400).json({
 			message: '"Please provide name and bio for the user."'
 		});
@@ -37,7 +42,7 @@ app.post('/api/users', (req, res) => {
         name: req.body.name,
         id: {
             type: String,
-			default: shortid.generate
+			default: shortid.generate()
         },
         bio: String
 	});
