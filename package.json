@@ -21,6 +21,7 @@
   "homepage": "https://github.com/kimly143/node-api1-project#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "shortid": "^2.2.15"
   }
 }
